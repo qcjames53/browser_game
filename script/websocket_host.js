@@ -1,14 +1,18 @@
-export (function () {
+export default class WebsocketHost {
 
-    var lastPeerId = null;
-    var peer = null; // Own peer object
-    var peerId = null;
-    var conn = null;
-    var hostId = document.getElementById("host-id");
-    var status = document.getElementById("connection-status");
-    var messages = document.getElementById("messages");
-    var copybutton = document.getElementById("host-id-copy-button");
+    lastPeerId = null;
+    peer = null; // Own peer object
+    peerId = null;
+    conn = null;
+    hostId = document.getElementById("host-id");
+    status = document.getElementById("connection-status");
+    messages = document.getElementById("messages");
+    copybutton = document.getElementById("host-id-copy-button");
     var gameManager = new GameManager(sendData);
+
+    constructor() {
+
+    }
 
     /**<script src="./script/game_manager.js"></script>
      * Create the Peer object for our end of the connection.
@@ -107,4 +111,4 @@ export (function () {
     copybutton.addEventListener('click', copyHostId);
 
     initialize();
-})();
+};

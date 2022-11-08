@@ -216,7 +216,7 @@
         [
             {
                 "name": "Tavern",
-                "color": "Yellow",
+                "color": "yellow",
                 "reward": [
                     "coin",
                     "coin",
@@ -508,5 +508,1524 @@
                 ]
             }
         ]
+    ],
+    "age2": [
+        [],
+        [],
+        [
+            {
+                "name": "Forum",
+                "color": "yellow",
+                "cost": [
+                    "brick",
+                    "brick"
+                ],
+                "reward": [
+                    "glassOrPaperOrTextile"
+                ],
+                "sigilCost": [
+                    3
+                ],
+                "sigilReward": [
+                    12
+                ]
+            },
+            {
+                "name": "Loom",
+                "color": "gray",
+                "reward": [
+                    "textile"
+                ]
+            },
+            {
+                "name": "Vineyard",
+                "color": "yellow",
+                "reward": [
+                    "special3"
+                ]
+            },
+            {
+                "name": "Stables",
+                "color": "red",
+                "cost": [
+                    "wood",
+                    "ore",
+                    "brick"
+                ],
+                "reward": [
+                    "military",
+                    "military"
+                ],
+                "sigilCost": [
+                    1
+                ]
+            },
+            {
+                "name": "Walls",
+                "color": "red",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "stone"
+                ],
+                "reward": [
+                    "military",
+                    "military"
+                ],
+                "sigilReward": [
+                    13
+                ]
+            },
+            {
+                "name": "Foundry",
+                "color": "brown",
+                "cost": [
+                    "coin"
+                ],
+                "reward": [
+                    "ore"
+                ]
+            },
+            {
+                "name": "Sawmill",
+                "color": "brown",
+                "cost": [
+                    "coin"
+                ],
+                "reward": [
+                    "wood",
+                    "wood"
+                ]
+            },
+            {
+                "name": "Quarry",
+                "color": "brown",
+                "cost": [
+                    "coin"
+                ],
+                "reward": [
+                    "stone",
+                    "stone"
+                ]
+            },
+            {
+                "name": "Caravansery",
+                "color": "yellow",
+                "cost": [
+                    "wood",
+                    "wood"
+                ],
+                "reward": [
+                    "woodOrStoneOrOreOrBrick"
+                ],
+                "sigilCost": [
+                    4
+                ],
+                "sigilReward": [
+                    14
+                ]
+            },
+            {
+                "name": "School",
+                "color": "green",
+                "cost": [
+                    "wood",
+                    "paper"
+                ],
+                "reward": [
+                    "tablet"
+                ],
+                "sigilReward": [
+                    15,
+                    16
+                ]
+            },
+            {
+                "name": "Library",
+                "color": "green",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "textile"
+                ],
+                "reward": [
+                    "tablet"
+                ],
+                "sigilCost": [
+                    6
+                ],
+                "sigilReward": [
+                    17,
+                    18
+                ]
+            },
+            {
+                "name": "Laboratory",
+                "color": "green",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "paper"
+                ],
+                "reward": [
+                    "cog"
+                ],
+                "sigilCost": [
+                    9
+                ],
+                "sigilReward": [
+                    19,
+                    20
+                ]
+            },
+            {
+                "name": "Dispensary",
+                "color": "green",
+                "cost": [
+                    "ore",
+                    "ore",
+                    "glass"
+                ],
+                "reward": [
+                    "compass"
+                ],
+                "sigilCost": [
+                    2
+                ],
+                "sigilReward": [
+                    21,
+                    22
+                ]
+            },
+            {
+                "name": "Temple",
+                "color": "blue",
+                "cost": [
+                    "wood",
+                    "brick",
+                    "glass"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ]
+            },
+            {
+                "name": "Courthouse",
+                "color": "blue",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "textile"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ],
+                "sigilCost": [
+                    5
+                ]
+            },
+            {
+                "name": "Statue",
+                "color": "blue",
+                "cost": [
+                    "ore",
+                    "ore",
+                    "wood"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ],
+                "sigilCost": [
+                    0
+                ]
+            },
+            {
+                "name": "Brickyard",
+                "color": "brown",
+                "cost": [
+                    "coin"
+                ],
+                "reward": [
+                    "brick",
+                    "brick"
+                ]
+            },
+            {
+                "name": "Archery Range",
+                "color": "red",
+                "cost": [
+                    "wood",
+                    "wood",
+                    "ore"
+                ],
+                "reward": [
+                    "military",
+                    "military"
+                ],
+                "sigilCost": [
+                    8
+                ]
+            },
+            {
+                "name": "Aqueduct",
+                "color": "blue",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "stone"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ],
+                "sigilCost": [
+                    10
+                ]
+            },
+            {
+                "name": "Press",
+                "color": "gray",
+                "reward": [
+                    "paper"
+                ]
+            },
+            {
+                "name": "Glassworks",
+                "color": "gray",
+                "reward": [
+                    "glass"
+                ]
+            }
+        ],
+        [
+            {
+                "name": "Dispensary",
+                "color": "green",
+                "cost": [
+                    "ore",
+                    "ore",
+                    "glass"
+                ],
+                "reward": [
+                    "compass"
+                ],
+                "sigilCost": [
+                    2
+                ],
+                "sigilReward": [
+                    21,
+                    22
+                ]
+            },
+            {
+                "name": "Training Ground",
+                "color": "red",
+                "cost": [
+                    "ore",
+                    "ore",
+                    "wood"
+                ],
+                "reward": [
+                    "military",
+                    "military"
+                ],
+                "sigilReward": [
+                    23
+                ]
+            },
+            {
+                "name": "Sawmill",
+                "color": "brown",
+                "cost": [
+                    "coin"
+                ],
+                "reward": [
+                    "wood",
+                    "wood"
+                ]
+            },
+            {
+                "name": "Foundry",
+                "color": "brown",
+                "cost": [
+                    "coin"
+                ],
+                "reward": [
+                    "ore",
+                    "ore"
+                ]
+            },
+            {
+                "name": "Bazar",
+                "color": "yellow",
+                "reward": [
+                    "special4"
+                ]
+            },
+            {
+                "name": "Brickyard",
+                "color": "brown",
+                "cost": [
+                    "coin"
+                ],
+                "reward": [
+                    "brick",
+                    "brick"
+                ]
+            },
+            {
+                "name": "Quarry",
+                "color": "brown",
+                "cost": [
+                    "coin"
+                ],
+                "reward": [
+                    "stone",
+                    "stone"
+                ]
+            }
+        ],
+        [
+            {
+                "name": "Laboratory",
+                "color": "green",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "paper"
+                ],
+                "reward": [
+                    "cog"
+                ],
+                "sigilCost": [
+                    9
+                ],
+                "sigilReward": [
+                    19,
+                    20
+                ]
+            },
+            {
+                "name": "Courthouse",
+                "color": "blue",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "textile"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ],
+                "sigilCost": [
+                    5
+                ]
+            },
+            {
+                "name": "Press",
+                "color": "gray",
+                "reward": [
+                    "paper"
+                ]
+            },
+            {
+                "name": "Loom",
+                "color": "gray",
+                "reward": [
+                    "textile"
+                ]
+            },
+            {
+                "name": "Stables",
+                "color": "red",
+                "cost": [
+                    "wood",
+                    "ore",
+                    "brick"
+                ],
+                "reward": [
+                    "military",
+                    "military"
+                ],
+                "sigilCost": [
+                    1
+                ]
+            },
+            {
+                "name": "Glassworks",
+                "color": "gray",
+                "reward": [
+                    "glass"
+                ]
+            },
+            {
+                "name": "Caravansery",
+                "color": "yellow",
+                "cost": [
+                    "wood",
+                    "wood"
+                ],
+                "reward": [
+                    "woodOrStoneOrOreOrBrick"
+                ],
+                "sigilCost": [
+                    4
+                ],
+                "sigilReward": [
+                    14
+                ]
+            }
+        ],
+        [
+            {
+                "name": "Caravansery",
+                "color": "yellow",
+                "cost": [
+                    "wood",
+                    "wood"
+                ],
+                "reward": [
+                    "woodOrStoneOrOreOrBrick"
+                ],
+                "sigilCost": [
+                    4
+                ],
+                "sigilReward": [
+                    14
+                ]
+            },
+            {
+                "name": "Library",
+                "color": "green",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "textile"
+                ],
+                "reward": [
+                    "tablet"
+                ],
+                "sigilCost": [
+                    6
+                ],
+                "sigilReward": [
+                    17,
+                    18
+                ]
+            },
+            {
+                "name": "Training Ground",
+                "color": "red",
+                "cost": [
+                    "ore",
+                    "ore",
+                    "wood"
+                ],
+                "reward": [
+                    "military",
+                    "military"
+                ],
+                "sigilReward": [
+                    23
+                ]
+            },
+            {
+                "name": "Vineyard",
+                "color": "yellow",
+                "reward": [
+                    "special3"
+                ]
+            },
+            {
+                "name": "Archery Range",
+                "color": "red",
+                "cost": [
+                    "wood",
+                    "wood",
+                    "ore"
+                ],
+                "reward": [
+                    "military",
+                    "military"
+                ],
+                "sigilCost": [
+                    8
+                ]
+            },
+            {
+                "name": "Forum",
+                "color": "yellow",
+                "cost": [
+                    "brick",
+                    "brick"
+                ],
+                "reward": [
+                    "glassOrPaperOrTextile"
+                ],
+                "sigilCost": [
+                    3
+                ],
+                "sigilReward": [
+                    12
+                ]
+            },
+            {
+                "name": "Temple",
+                "color": "blue",
+                "cost": [
+                    "wood",
+                    "brick",
+                    "glass"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ]
+            }
+        ],
+        [
+            {
+                "name": "Training Ground",
+                "color": "red",
+                "cost": [
+                    "ore",
+                    "ore",
+                    "wood"
+                ],
+                "reward": [
+                    "military",
+                    "military"
+                ],
+                "sigilReward": [
+                    23
+                ]
+            },
+            {
+                "name": "Walls",
+                "color": "red",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "stone"
+                ],
+                "reward": [
+                    "military",
+                    "military"
+                ],
+                "sigilReward": [
+                    13
+                ]
+            },
+            {
+                "name": "School",
+                "color": "green",
+                "cost": [
+                    "wood",
+                    "paper"
+                ],
+                "reward": [
+                    "tablet"
+                ],
+                "sigilReward": [
+                    15,
+                    16
+                ]
+            },
+            {
+                "name": "Bazar",
+                "color": "yellow",
+                "reward": [
+                    "special4"
+                ]
+            },
+            {
+                "name": "Aqueduct",
+                "color": "blue",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "stone"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ],
+                "sigilCost": [
+                    10
+                ]
+            },
+            {
+                "name": "Forum",
+                "color": "yellow",
+                "cost": [
+                    "brick",
+                    "brick"
+                ],
+                "reward": [
+                    "glassOrPaperOrTextile"
+                ],
+                "sigilCost": [
+                    3
+                ],
+                "sigilReward": [
+                    12
+                ]
+            },
+            {
+                "name": "Statue",
+                "color": "blue",
+                "cost": [
+                    "ore",
+                    "ore",
+                    "wood"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ],
+                "sigilCost": [
+                    0
+                ]
+            }
+        ]
+    ],
+    "age3": [
+        [],
+        [],
+        [
+            {
+                "name": "Haven",
+                "color": "yellow",
+                "cost": [
+                    "wood",
+                    "ore",
+                    "textile"
+                ],
+                "reward": [
+                    "special5"
+                ],
+                "sigilCost": [
+                    12
+                ]
+            },
+            {
+                "name": "Pantheon",
+                "color": "blue",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "ore",
+                    "glass",
+                    "paper",
+                    "textile"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ],
+                "sigilCost": [
+                    7
+                ]
+            },
+            {
+                "name": "University",
+                "color": "green",
+                "cost": [
+                    "wood",
+                    "wood",
+                    "glass",
+                    "paper"
+                ],
+                "reward": [
+                    "tablet"
+                ],
+                "sigilCost": [
+                    18
+                ]
+            },
+            {
+                "name": "Academy",
+                "color": "green",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "stone",
+                    "glass"
+                ],
+                "reward": [
+                    "compass"
+                ],
+                "sigilCost": [
+                    15
+                ]
+            },
+            {
+                "name": "Lodge",
+                "color": "green",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "paper",
+                    "textile"
+                ],
+                "reward": [
+                    "compass"
+                ],
+                "sigilCost": [
+                    22
+                ]
+            },
+            {
+                "name": "Senate",
+                "color": "blue",
+                "cost": [
+                    "wood",
+                    "wood",
+                    "stone",
+                    "ore"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ],
+                "sigilCost": [
+                    17
+                ]
+            },
+            {
+                "name": "Town Hall",
+                "color": "blue",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "ore",
+                    "glass"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ]
+            },
+            {
+                "name": "Gardens",
+                "color": "blue",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "wood"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ],
+                "sigilCost": [
+                    11
+                ]
+            },
+            {
+                "name": "Palace",
+                "color": "blue",
+                "cost": [
+                    "wood",
+                    "stone",
+                    "ore",
+                    "brick",
+                    "glass",
+                    "paper",
+                    "textile"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ]
+            },
+            {
+                "name": "Arsenal",
+                "color": "red",
+                "cost": [
+                    "wood",
+                    "wood",
+                    "ore",
+                    "textile"
+                ],
+                "reward": [
+                    "military",
+                    "military",
+                    "military"
+                ]
+            },
+            {
+                "name": "Fortifications",
+                "color": "red",
+                "cost": [
+                    "ore",
+                    "ore",
+                    "ore",
+                    "brick"
+                ],
+                "reward": [
+                    "military",
+                    "military",
+                    "military"
+                ],
+                "sigilCost": [
+                    13
+                ]
+            },
+            {
+                "name": "Study",
+                "color": "green",
+                "cost": [
+                    "wood",
+                    "paper",
+                    "textile"
+                ],
+                "reward": [
+                    "cog"
+                ],
+                "sigilCost": [
+                    16
+                ]
+            },
+            {
+                "name": "Siege Workshop",
+                "color": "red",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "brick",
+                    "wood"
+                ],
+                "reward": [
+                    "military",
+                    "military",
+                    "military"
+                ],
+                "sigilCost": [
+                    20
+                ]
+            },
+            {
+                "name": "Observatory",
+                "color": "green",
+                "cost": [
+                    "ore",
+                    "ore",
+                    "glass",
+                    "textile"
+                ],
+                "reward": [
+                    "cog"
+                ],
+                "sigilCost": [
+                    19
+                ]
+            },
+            {
+                "name": "Lighthouse",
+                "color": "yellow",
+                "cost": [
+                    "stone",
+                    "glass"
+                ],
+                "reward": [
+                    "special6"
+                ],
+                "sigilCost": [
+                    14
+                ]
+            },
+            {
+                "name": "Arena",
+                "color": "yellow",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "ore"
+                ],
+                "sigilCost": [
+                    21
+                ]
+            }
+        ],
+        [
+            {
+                "name": "Haven",
+                "color": "yellow",
+                "cost": [
+                    "wood",
+                    "ore",
+                    "textile"
+                ],
+                "reward": [
+                    "special5"
+                ],
+                "sigilCost": [
+                    12
+                ]
+            },
+            {
+                "name": "Castrum",
+                "color": "red",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "wood",
+                    "paper"
+                ],
+                "reward": [
+                    "military",
+                    "military",
+                    "military"
+                ]
+            },
+            {
+                "name": "Gardens",
+                "color": "blue",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "wood"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ],
+                "sigilCost": [
+                    11
+                ]
+            },
+            {
+                "name": "Chamber of Commerce",
+                "color": "yellow",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "paper"
+                ],
+                "reward": [
+                    "special7"
+                ]
+            },
+            {
+                "name": "Circus",
+                "color": "red",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "stone",
+                    "ore"
+                ],
+                "reward": [
+                    "military",
+                    "military",
+                    "military"
+                ],
+                "sigilCost": [
+                    23
+                ]
+            },
+            {
+                "name": "University",
+                "color": "green",
+                "cost": [
+                    "wood",
+                    "wood",
+                    "glass",
+                    "paper"
+                ],
+                "reward": [
+                    "tablet"
+                ],
+                "sigilCost": [
+                    18
+                ]
+            }
+        ],
+        [
+            {
+                "name": "Ludus",
+                "color": "yellow",
+                "cost": [
+                    "stone",
+                    "ore"
+                ],
+                "reward": [
+                    "special8"
+                ]
+            },
+            {
+                "name": "Siege Workshop",
+                "color": "red",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "brick",
+                    "wood"
+                ],
+                "reward": [
+                    "military",
+                    "military",
+                    "military"
+                ],
+                "sigilCost": [
+                    20
+                ]
+            },
+            {
+                "name": "Arsenal",
+                "color": "red",
+                "cost": [
+                    "wood",
+                    "wood",
+                    "ore",
+                    "textile"
+                ],
+                "reward": [
+                    "military",
+                    "military",
+                    "military"
+                ]
+            },
+            {
+                "name": "Study",
+                "color": "green",
+                "cost": [
+                    "wood",
+                    "paper",
+                    "textile"
+                ],
+                "reward": [
+                    "cog"
+                ],
+                "sigilCost": [
+                    16
+                ]
+            },
+            {
+                "name": "Sentate",
+                "color": "blue",
+                "cost": [
+                    "wood",
+                    "wood",
+                    "stone",
+                    "ore"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ],
+                "sigilCost": [
+                    17
+                ]
+            },
+            {
+                "name": "Arena",
+                "color": "yellow",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "ore"
+                ],
+                "reward": [
+                    "special9"
+                ],
+                "sigilCost": [
+                    21
+                ]
+            }
+        ],
+        [
+            {
+                "name": "Chamber of Commerce",
+                "color": "yellow",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "paper"
+                ],
+                "reward": [
+                    "special7"
+                ]
+            },
+            {
+                "name": "Town Hall",
+                "color": "blue",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "ore",
+                    "glass"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ]
+            },
+            {
+                "name": "Pantheon",
+                "color": "blue",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "ore",
+                    "glass",
+                    "paper",
+                    "textile"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ],
+                "sigilCost": [
+                    7
+                ]
+            },
+            {
+                "name": "Lodge",
+                "color": "green",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "paper",
+                    "textile"
+                ],
+                "reward": [
+                    "compass"
+                ],
+                "sigilCost": [
+                    22
+                ]
+            },
+            {
+                "name": "Circus",
+                "color": "red",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "stone",
+                    "ore"
+                ],
+                "reward": [
+                    "military",
+                    "military",
+                    "military"
+                ],
+                "sigilCost": [
+                    23
+                ]
+            },
+            {
+                "name": "Lighthouse",
+                "color": "yellow",
+                "cost": [
+                    "stone",
+                    "glass"
+                ],
+                "reward": [
+                    "special6"
+                ],
+                "sigilCost": [
+                    14
+                ]
+            }
+        ],
+        [
+            {
+                "name": "Academy",
+                "color": "green",
+                "cost": [
+                    "stone",
+                    "stone",
+                    "stone",
+                    "glass"
+                ],
+                "reward": [
+                    "compass"
+                ],
+                "sigilCost": [
+                    15
+                ]
+            },
+            {
+                "name": "Palace",
+                "color": "blue",
+                "cost": [
+                    "wood",
+                    "stone",
+                    "ore",
+                    "brick",
+                    "glass",
+                    "paper",
+                    "textile"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ]
+            },
+            {
+                "name": "Castrum",
+                "color": "red",
+                "cost": [
+                    "brick",
+                    "brick",
+                    "wood",
+                    "paper"
+                ],
+                "reward": [
+                    "military",
+                    "military",
+                    "military"
+                ]
+            },
+            {
+                "name": "Fortifications",
+                "color": "red",
+                "cost": [
+                    "ore",
+                    "ore",
+                    "ore",
+                    "brick"
+                ],
+                "reward": [
+                    "military",
+                    "military",
+                    "military"
+                ],
+                "sigilCost": [
+                    13
+                ]
+            },
+            {
+                "name": "Observatory",
+                "color": "green",
+                "cost": [
+                    "ore",
+                    "ore",
+                    "glass",
+                    "textile"
+                ],
+                "reward": [
+                    "cog"
+                ],
+                "sigilCost": [
+                    19
+                ]
+            },
+            {
+                "name": "Ludus",
+                "color": "yellow",
+                "cost": [
+                    "stone",
+                    "ore"
+                ],
+                "reward": [
+                    "special8"
+                ]
+            }
+        ]
+    ],
+    "guilds": [
+        {
+            "name": "Philosophers Guild",
+            "color": "purple",
+            "cost": [
+                "brick",
+                "brick",
+                "brick",
+                "paper",
+                "textile"
+            ],
+            "reward": [
+                "special10"
+            ]
+        },
+        {
+            "name": "Traders Guild",
+            "color": "purple",
+            "cost": [
+                "glass",
+                "paper",
+                "textile"
+            ],
+            "reward": [
+                "special11"
+            ]
+        },
+        {
+            "name": "Workers Guild",
+            "color": "purple",
+            "cost": [
+                "ore",
+                "ore",
+                "wood",
+                "stone",
+                "brick"
+            ],
+            "reward": [
+                "special12"
+            ]
+        },
+        {
+            "name": "Spies Guild",
+            "color": "purple",
+            "cost": [
+                "brick",
+                "brick",
+                "glass"
+            ],
+            "reward": [
+                "special13"
+            ]
+        },
+        {
+            "name": "Craftsmens Guild",
+            "color": "purple",
+            "cost": [
+                "stone",
+                "stone",
+                "ore",
+                "ore"
+            ],
+            "reward": [
+                "special14"
+            ]
+        },
+        {
+            "name": "Builders Guild",
+            "color": "purple",
+            "cost": [
+                "stone",
+                "stone",
+                "stone",
+                "brick",
+                "brick",
+                "glass"
+            ],
+            "reward": [
+                "special15"
+            ]
+        },
+        {
+            "name": "Decorators Guild",
+            "color": "purple",
+            "cost": [
+                "ore",
+                "ore",
+                "stone",
+                "textile"
+            ],
+            "reward": [
+                "special16"
+            ]
+        },
+        {
+            "name": "Scientists Guild",
+            "color": "purple",
+            "cost": [
+                "wood",
+                "wood",
+                "ore",
+                "ore",
+                "paper"
+            ],
+            "reward": [
+                "compassOrTabletOrCog"
+            ]
+        },
+        {
+            "name": "Magistrates Guild",
+            "color": "purple",
+            "cost": [
+                "wood",
+                "wood",
+                "wood",
+                "stone",
+                "textile"
+            ],
+            "reward": [
+                "special17"
+            ]
+        },
+        {
+            "name": "Shipowners Guild",
+            "color": "purple",
+            "cost": [
+                "wood",
+                "wood",
+                "wood",
+                "glass",
+                "paper"
+            ],
+            "reward": [
+                "special18"
+            ]
+        }
     ]
 }
