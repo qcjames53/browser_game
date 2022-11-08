@@ -4,12 +4,10 @@
     var peer = null; // Own peer object
     var peerId = null;
     var conn = null;
-    var recvId = document.getElementById("receiver-id");
-    var status = document.getElementById("status");
-    var message = document.getElementById("message");
-    var sendMessageBox = document.getElementById("sendMessageBox");
-    var sendButton = document.getElementById("sendButton");
-    var clearMsgsButton = document.getElementById("clearMsgsButton");
+    var recvId = document.getElementById("host-id");
+    var status = document.getElementById("connection-status");
+    var messages = document.getElementById("messages");
+    var gameManager = new GameManager(sendData);
 
     /**
      * Create the Peer object for our end of the connection.
@@ -33,7 +31,7 @@
             }
 
             console.log('ID: ' + peer.id);
-            recvId.innerHTML = "ID: " + peer.id;
+            recvId.innerHTML = peer.id;
             status.innerHTML = "Awaiting connection...";
         });
         peer.on('connection', function (c) {
@@ -78,8 +76,7 @@
     function ready() {
         conn.on('data', function (data) {
             console.log("Data recieved");
-            var cueString = "<span class=\"cueMsg\">Cue: </span>";
-            addMessage("<span class=\"peerMsg\">Peer: </span>" + data);
+            handleInput(data);
         });
         conn.on('close', function () {
             status.innerHTML = "Connection reset<br>Awaiting connection...";
@@ -87,53 +84,19 @@
         });
     }
 
-    function addMessage(msg) {
-        var now = new Date();
-        var h = now.getHours();
-        var m = addZero(now.getMinutes());
-        var s = addZero(now.getSeconds());
-
-        if (h > 12)
-            h -= 12;
-        else if (h === 0)
-            h = 12;
-
-        function addZero(t) {
-            if (t < 10)
-                t = "0" + t;
-            return t;
-        };
-
-        message.innerHTML = "<br><span class=\"msg-time\">" + h + ":" + m + ":" + s + "</span>  -  " + msg + message.innerHTML;
+    function handleInput(data) {
+        messages.innerHTML = data;
+        gameManager.handleInput(data);
     }
 
-    function clearMessages() {
-        message.innerHTML = "";
-        addMessage("Msgs cleared");
-    }
-
-    // Listen for enter in message box
-    sendMessageBox.addEventListener('keypress', function (e) {
-        var event = e || window.event;
-        var char = event.which || event.keyCode;
-        if (char == '13')
-            sendButton.click();
-    });
-    // Send message
-    sendButton.addEventListener('click', function () {
+    function sendData(data) {
+        // if we're connected
         if (conn && conn.open) {
-            var msg = sendMessageBox.value;
-            sendMessageBox.value = "";
-            conn.send(msg);
-            console.log("Sent: " + msg)
-            addMessage("<span class=\"selfMsg\">Self: </span>" + msg);
+            conn.send(data)
         } else {
-            console.log('Connection is closed');
+            console.log("Could not send data. Connection closed.")
         }
-    });
-
-    // Clear messages box
-    clearMsgsButton.addEventListener('click', clearMessages);
+    }
 
     initialize();
 })();

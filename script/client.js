@@ -90,7 +90,7 @@
         });
         // Handle incoming data (messages only since this is the signal sender)
         conn.on('data', function (data) {
-            addMessage("<span class=\"peerMsg\">Peer:</span> " + data);
+            displayHand(data);
         });
         conn.on('close', function () {
             connection_status.innerHTML = "Connection closed";
@@ -114,44 +114,9 @@
             return results[1];
     };
 
-    /**
-     * Send a signal via the peer connection and add it to the log.
-     * This will only occur if the connection is still alive.
-     */
-    function signal(sigName) {
-        if (conn && conn.open) {
-            conn.send(sigName);
-            console.log(sigName + " signal sent");
-            addMessage(sigName);
-        } else {
-            console.log('Connection is closed');
-        }
+    function displayHand(hand) {
+        message.innerHTML = hand;
     }
-
-    function addMessage(msg) {
-        var now = new Date();
-        var h = now.getHours();
-        var m = addZero(now.getMinutes());
-        var s = addZero(now.getSeconds());
-
-        if (h > 12)
-            h -= 12;
-        else if (h === 0)
-            h = 12;
-
-        function addZero(t) {
-            if (t < 10)
-                t = "0" + t;
-            return t;
-        };
-
-        message.innerHTML = "<br><span class=\"msg-time\">" + h + ":" + m + ":" + s + "</span>  -  " + msg + message.innerHTML;
-    };
-
-    function clearMessages() {
-        message.innerHTML = "";
-        addMessage("Msgs cleared");
-    };
 
     function playCard() {
         // if we're connected
@@ -179,30 +144,6 @@
             console.log("Could not discard card. Connection closed.")
         }
     };
-
-
-    // // Listen for enter in message box
-    // sendMessageBox.addEventListener('keypress', function (e) {
-    //     var event = e || window.event;
-    //     var char = event.which || event.keyCode;
-    //     if (char == '13')
-    //         sendButton.click();
-    // });
-    // // Send message
-    // sendButton.addEventListener('click', function () {
-    //     if (conn && conn.open) {
-    //         var msg = sendMessageBox.value;
-    //         sendMessageBox.value = "";
-    //         conn.send(msg);
-    //         console.log("Sent: " + msg);
-    //         addMessage("<span class=\"selfMsg\">Self: </span> " + msg);
-    //     } else {
-    //         console.log('Connection is closed');
-    //     }
-    // });
-
-    // // Clear messages box
-    // clearMsgsButton.addEventListener('click', clearMessages);
 
     // Set up the button event listeners
     connectButton.addEventListener('click', join);
