@@ -1,5 +1,4 @@
-import ConnectionInstance from "./connection-instance.js";
-//import GameManager from "./game_manager.js";
+import ConnectionManager from "./connection-manager.js";
 
 class HostPageManager {
     connections = [];
@@ -9,10 +8,6 @@ class HostPageManager {
     connectionsOverview = document.getElementById("connections-overview");
 
     constructor() {
-
-    }
-
-    init() {
         // set up the page buttons
         this.addPlayerButton.addEventListener('click', buttonAddPlayer);
         this.removePlayerButton.addEventListener('click', buttonRemovePlayer);
@@ -25,7 +20,7 @@ class HostPageManager {
 
         // Handle drawing player properties
         let tableString = `<table><tr>
-            <th>Player Name</th>
+            <th>P</th>
             <th>Connection ID</th>
             <th>Status</th>
             <th>Last message sent</th>
@@ -34,25 +29,7 @@ class HostPageManager {
 
         // loop over all players
         for (let i = 0; i < this.connections.length; i++) {
-            tableString += `<tr>
-                <td>Player ${i}</td>
-                <td>
-                    <input type="text" id="player${i}-id" value="${this.connections[i].hostId}">
-                    <button onclick="(function(){
-                        document.getElementById('player${i}-id').select();
-                        document.execCommand('copy');
-                        })();">Copy ID</button>
-                </td>   
-                <td>
-                    ${this.connections[i].connectionStatus}
-                </td>
-                <td> 
-                    <input type="text" value="${this.connections[i].lastSentMessage}">
-                </td>
-                <td>
-                    <input type="text" value="${this.connections[i].lastReceivedMessage}">
-                </td>
-            </tr>`;
+            tableString += this.connections[i].getDisplayString();
         }
         tableString += `</table>`;
         this.connectionsOverview.innerHTML = tableString;
@@ -62,7 +39,11 @@ class HostPageManager {
         // Make sure don't add more than 7 players
         if (this.connections.length >= 7) return;
 
-        this.connections.push(new ConnectionInstance(this));
+        this.connections.push(new ConnectionManager(
+            "Player",
+            this,
+            this.connections.length
+        ));
         this.redrawPageElements();
     }
 
@@ -85,4 +66,3 @@ function buttonRemovePlayer() {
 
 // run on page load
 let h = new HostPageManager();
-h.init();

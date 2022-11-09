@@ -1,7 +1,5 @@
 export default class ConnectionInstance {
 
-    lastSentMessage = "";
-    lastReceivedMessage = "";
     hostId = "test id";
     connectionStatus = "Awaiting connection";
 
@@ -10,8 +8,8 @@ export default class ConnectionInstance {
     lastPeerId = null;
     conn = null;
 
-    constructor(hostPageManager) {
-        this.hostPageManager = hostPageManager;
+    constructor(connectionManager) {
+        this.connectionManager = connectionManager;
         this.initialize();
     }
 
@@ -42,7 +40,7 @@ export default class ConnectionInstance {
             console.log('ID: ' + _this.peer.id);
             _this.hostId = _this.peer.id;
             _this.connectionStatus = "Awaiting connection...";
-            _this.hostPageManager.redrawPageElements();
+            _this.connectionManager.redrawHostPage();
         });
         this.peer.on('connection', function (c) {
             // Allow only a single connection
@@ -57,13 +55,13 @@ export default class ConnectionInstance {
             _this.conn = c;
             console.log("Connected to: " + _this.conn.peer);
             _this.connectionStatus = "Connected";
-            _this.hostPageManager.redrawPageElements();
+            _this.connectionManager.redrawHostPage();
             _this.ready();
         });
         this.peer.on('disconnected', function () {
             _this.connectionStatus = "Connection lost. Please reconnect";
             console.log('Connection lost. Please reconnect');
-            _this.hostPageManager.redrawPageElements();
+            _this.connectionManager.redrawHostPage();
 
             // Workaround for peer.reconnect deleting previous id
             _this.peer.id = _this.lastPeerId;
@@ -74,7 +72,7 @@ export default class ConnectionInstance {
             _this.conn = null;
             _this.connectionStatus = "Connection destroyed. Please refresh";
             console.log('Connection destroyed');
-            _this.hostPageManager.redrawPageElements();
+            _this.connectionManager.redrawHostPage();
         });
         this.peer.on('error', function (err) {
             console.log(err);
@@ -97,21 +95,20 @@ export default class ConnectionInstance {
         this.conn.on('close', function () {
             _this.connectionStatus = "Connection reset. Awaiting connection...";
             _this.conn = null;
-            _this.hostPageManager.redrawPageElements();
+            _this.connectionManager.redrawHostPage();
         });
     }
 
     receiveMessage(data) {
-        this.lastReceivedMessage = data;
-        this.hostPageManager.redrawPageElements();
+        this.connectionManager.receiveMessage(data);
+        this.connectionManager.redrawHostPage();
     }
 
     sendMessage(data) {
         // Check that we're connected
         if (this.conn && this.conn.open) {
-            this.lastSentMessage = data;
             this.conn.send(data)
-            this.hostPageManager.redrawPageElements();
+            this.connectionManager.redrawHostPage();
         } else {
             console.log("Could not send data. Connection closed.")
         }
