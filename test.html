@@ -1,0 +1,12 @@
+<html>
+
+<body>
+    <p>Test text</p>
+    <input type="text" id="a" value="asdfg">
+    <button onclick="(function(){
+        document.getElementById('a').select();
+        document.execCommand('copy');
+        })();">Copy</button>
+</body>
+
+</html>
