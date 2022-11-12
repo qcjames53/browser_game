@@ -5,6 +5,7 @@ import Bot from "./bot";
 export default class PlayerManager {
 
     players: Array<DataConnection | Bot> = [];
+    botIndices: Array<number> = [];
     eventLog: Array<string> = [];
 
     // p2p stuff
@@ -34,50 +35,24 @@ export default class PlayerManager {
      */
     initialize() {
         this.peer.on('open', (id) => {
-            // // Workaround for peer.reconnect deleting previous id
-            // if (this.peer.id === null) {
-            //     this.logEvent('Received null id from peer open');
-            //     this.peer.id = this.lastPeerId;
-            // } else {
-            //     this.lastPeerId = this.peer.id;
-            // }
-
             this.logEvent(`Host ID obtained: ${this.peer.id}`);
             this.redrawHostPage();
         });
         this.peer.on('connection', (c) => {
             // Handle incoming connections. Do nothing if can't accept new player.
-            if (!this.addPlayer(c)) {
+            let newPlayerIndex = this.addPlayer(c);
+            if (newPlayerIndex == -1) {
                 return;
             };
 
             // Set up the new players
-            this.logEvent(`Connected to: ${c.peer}`);
+            this.logEvent(`Connected to: ${c.peer}. Player ${newPlayerIndex}`);
             this.redrawHostPage();
-            this.ready(c, this.players.length - 1);
-
-            // // Allow only a single connection
-            // if (this.conn && this.conn.open) {
-            //     c.on('open', () => {
-            //         c.send("Already connected to another client");
-            //         setTimeout(c.close, 500);
-            //     });
-            //     return;
-            // }
-
-            // this.conn = c;
-            // this.logEvent("Connected to: " + this.conn.peer);
-            // this.redrawHostPage();
-            // this.ready();
+            this.ready(c, newPlayerIndex);
         });
         this.peer.on('disconnected', () => {
             this.logEvent('Connection lost to signalling server. Please reconnect');
             this.redrawHostPage();
-
-            // // Workaround for peer.reconnect deleting previous id
-            // this.peer.id = this.lastPeerId;
-            // this.peer._lastServerId = this.lastPeerId;
-            // this.peer.reconnect();
         });
         this.peer.on('close', () => {
             this.players = [];
@@ -105,7 +80,6 @@ export default class PlayerManager {
                 throw `Non-string data type for returned data. Actual type '${typeof data}'`;
             }
 
-            this.logEvent("Data received from conn");
             this.receiveMessage(data.toString(), playerIndex);
         });
         conn.on('close', () => {
@@ -140,27 +114,40 @@ export default class PlayerManager {
     }
 
     /// Returns whether we added the player or not
-    addPlayer(conn: DataConnection): boolean {
-        // ignore if there are already 7 players
+    addPlayer(conn: DataConnection): number {
+        // if there are already 7 players, replace a bot
         if (this.players.length >= 7) {
-            this.logEvent("Someone tried to join but there are already 7 players!");
-            return false;
+            if (this.botIndices.length == 0) {
+                this.logEvent("Someone tried to join but there are already 7 players!");
+                return -1;
+            }
+
+            // replace the first bot
+            let index = this.botIndices[0];
+            this.players[index] = conn;
+            this.logEvent(`Someone tried to join. Replacing bot ${index}`);
+            this.botIndices.shift();
+            return index;
         }
 
         this.players.push(conn);
-        return true;
+        return this.players.length - 1;
     }
 
     /// Returns whether we added the bot or not
-    addBot(): boolean {
+    addBot(): number {
         // ignore if there are already 7 players
         if (this.players.length >= 7) {
             this.logEvent("Tried to create bot but there are already 7 players!");
-            return false;
+            this.redrawHostPage();
+            return -1;
         }
 
         this.players.push(new Bot());
-        return true;
+        this.botIndices.push(this.players.length - 1);
+        this.logEvent(`Added bot as player ${this.players.length - 1}`);
+        this.redrawHostPage();
+        return this.players.length - 1;
     }
 
     logEvent(message: string) {

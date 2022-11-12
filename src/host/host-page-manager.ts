@@ -19,6 +19,9 @@ export default class HostPageManager {
         this.hostIdElement = document.getElementById("host-id") as HTMLInputElement | null ?? missingElement();
         this.addBotButton = document.getElementById("add-bot-button") as HTMLButtonElement | null ?? missingElement();
 
+        // set up buttons
+        this.addBotButton.addEventListener("click", () => this.playerManager.addBot());
+
         // Draw page elements
         this.redrawPageElements();
     }
