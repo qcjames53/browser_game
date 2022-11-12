@@ -16,14 +16,14 @@ export default class ClientManager {
     constructor() {
         // ensure that the htmlelements are correct
         const missingElement = () => { throw "Missing page element" }
-        this.hostIdInput = document.getElementById("host-id") as HTMLInputElement ?? missingElement();
+        this.hostIdInput = document.getElementById("host-id") as HTMLInputElement | null ?? missingElement();
         this.connection_status = document.getElementById("connection-status") ?? missingElement();
         this.message = document.getElementById("message") ?? missingElement();
-        this.connectButton = document.getElementById("connect-button") as HTMLButtonElement ?? missingElement();
-        this.playButton = document.getElementById("card-play") as HTMLButtonElement ?? missingElement();
-        this.sacrificeButton = document.getElementById("card-sacrifice") as HTMLButtonElement ?? missingElement();
-        this.discardButton = document.getElementById("card-discard") as HTMLButtonElement ?? missingElement();
-        this.cardNumber = document.getElementById("card-number") as HTMLInputElement ?? missingElement();
+        this.connectButton = document.getElementById("connect-button") as HTMLButtonElement | null ?? missingElement();
+        this.playButton = document.getElementById("card-play") as HTMLButtonElement | null ?? missingElement();
+        this.sacrificeButton = document.getElementById("card-sacrifice") as HTMLButtonElement | null ?? missingElement();
+        this.discardButton = document.getElementById("card-discard") as HTMLButtonElement | null ?? missingElement();
+        this.cardNumber = document.getElementById("card-number") as HTMLInputElement | null ?? missingElement();
 
 
         // Create own this.peer object with connection to shared this.peerJS server

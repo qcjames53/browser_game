@@ -1,16 +1,14 @@
 import { DataConnection, Peer } from "peerjs";
+import Bot from "./bot";
 
 /// A class which handles player and bot connections
 export default class PlayerManager {
 
-    players = [];
-    bots = [];
+    players: Array<DataConnection | Bot> = [];
     eventLog: Array<string> = [];
 
     // p2p stuff
     peer: Peer; // Own peer object
-    lastPeerId: string | null = null;
-    conn: DataConnection | null = null;
 
     redrawHostPage: Function;
 
@@ -48,22 +46,32 @@ export default class PlayerManager {
             this.redrawHostPage();
         });
         this.peer.on('connection', (c) => {
-            // Allow only a single connection
-            if (this.conn && this.conn.open) {
-                c.on('open', () => {
-                    c.send("Already connected to another client");
-                    setTimeout(c.close, 500);
-                });
+            // Handle incoming connections. Do nothing if can't accept new player.
+            if (!this.addPlayer(c)) {
                 return;
-            }
+            };
 
-            this.conn = c;
-            this.logEvent("Connected to: " + this.conn.peer);
+            // Set up the new players
+            this.logEvent(`Connected to: ${c.peer}`);
             this.redrawHostPage();
-            this.ready();
+            this.ready(c, this.players.length - 1);
+
+            // // Allow only a single connection
+            // if (this.conn && this.conn.open) {
+            //     c.on('open', () => {
+            //         c.send("Already connected to another client");
+            //         setTimeout(c.close, 500);
+            //     });
+            //     return;
+            // }
+
+            // this.conn = c;
+            // this.logEvent("Connected to: " + this.conn.peer);
+            // this.redrawHostPage();
+            // this.ready();
         });
         this.peer.on('disconnected', () => {
-            this.logEvent('Connection lost. Please reconnect');
+            this.logEvent('Connection lost to signalling server. Please reconnect');
             this.redrawHostPage();
 
             // // Workaround for peer.reconnect deleting previous id
@@ -72,8 +80,8 @@ export default class PlayerManager {
             // this.peer.reconnect();
         });
         this.peer.on('close', () => {
-            this.conn = null;
-            this.logEvent('Connection destroyed');
+            this.players = [];
+            this.logEvent('Connections all destroyed');
         });
         this.peer.on('error', (err) => {
             this.logEvent(`Error: ${err}`);
@@ -84,42 +92,75 @@ export default class PlayerManager {
      * Triggered once a connection has been achieved.
      * Defines callbacks to handle incoming data and connection events.
      */
-    ready() {
+    ready(conn: DataConnection, playerIndex: number) {
         // if conn is null at this stage, throw an error
-        if (!this.conn) {
+        if (!conn) {
             throw `Tried to interact with null connection`;
         }
 
 
-        this.conn.on('data', (data) => {
+        conn.on('data', (data) => {
             // ensure that the received data is a string
             if (typeof data !== "string") {
                 throw `Non-string data type for returned data. Actual type '${typeof data}'`;
             }
 
             this.logEvent("Data received from conn");
-            this.receiveMessage(data.toString());
+            this.receiveMessage(data.toString(), playerIndex);
         });
-        this.conn.on('close', () => {
+        conn.on('close', () => {
             this.logEvent("Connection reset with conn. Awaiting connection...");
-            this.conn = null;
+
+            // swap out the player with a bot
+            this.players[playerIndex] = new Bot();
             this.redrawHostPage();
         });
     }
 
-    receiveMessage(data: string) {
-        this.logEvent(data);
+    receiveMessage(data: string, playerIndex: number) {
+        this.logEvent(`P${playerIndex}: ${data}`);
         this.redrawHostPage();
     }
 
-    sendMessage(data: string) {
+    sendMessage(data: string, playerIndex: number) {
+        // Get the connection for this player index
+        if (this.players.length <= playerIndex || playerIndex < 0) {
+            this.logEvent("Tried to send message to non-existent player");
+            return;
+        }
+        let conn = this.players[playerIndex];
+
         // Check that we're connected
-        if (this.conn && this.conn.open) {
-            this.conn.send(data)
+        if (conn && conn.open) {
+            conn.send(data)
             this.redrawHostPage();
         } else {
-            this.logEvent("Could not send data to conn. Connection closed.")
+            this.logEvent("Could not send data to conn. Connection closed.");
         }
+    }
+
+    /// Returns whether we added the player or not
+    addPlayer(conn: DataConnection): boolean {
+        // ignore if there are already 7 players
+        if (this.players.length >= 7) {
+            this.logEvent("Someone tried to join but there are already 7 players!");
+            return false;
+        }
+
+        this.players.push(conn);
+        return true;
+    }
+
+    /// Returns whether we added the bot or not
+    addBot(): boolean {
+        // ignore if there are already 7 players
+        if (this.players.length >= 7) {
+            this.logEvent("Tried to create bot but there are already 7 players!");
+            return false;
+        }
+
+        this.players.push(new Bot());
+        return true;
     }
 
     logEvent(message: string) {
@@ -135,7 +176,7 @@ export default class PlayerManager {
     }
 
     displayPlayerCount() {
-        return `Players: ${this.players.length + this.bots.length}`;
+        return `Players: ${this.players.length}`;
     }
 
     displayHostId() {

@@ -5,6 +5,7 @@ export default class HostPageManager {
     hostLogElement: HTMLElement;
     hostIdElement: HTMLInputElement;
     playerManager: PlayerManager;
+    addBotButton: HTMLButtonElement;
 
     constructor() {
         this.playerManager = new PlayerManager(
@@ -15,7 +16,8 @@ export default class HostPageManager {
         const missingElement = () => { throw "Missing page element" }
         this.playerCountElement = document.getElementById("player-count") ?? missingElement();
         this.hostLogElement = document.getElementById("connections-overview") ?? missingElement();
-        this.hostIdElement = document.getElementById("host-id") as HTMLInputElement ?? missingElement();
+        this.hostIdElement = document.getElementById("host-id") as HTMLInputElement | null ?? missingElement();
+        this.addBotButton = document.getElementById("add-bot-button") as HTMLButtonElement | null ?? missingElement();
 
         // Draw page elements
         this.redrawPageElements();
