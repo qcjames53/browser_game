@@ -1,0 +1,17 @@
+{
+  "name": "browser_game",
+  "version": "1.0.0",
+  "description": "Web multiplayer proof of concept using Seven Wonders",
+  "main": "index.js",
+  "repository": "https://github.com/qcjames53/browser_game.git",
+  "author": "Quinn James <jamesqui@msu.edu>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --minify --sourcemap --format=esm --outfile=dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "esbuild": "^0.15.13",
+  "peerjs": "^1.4.7",
+  "typescript": "^4.8.4"
+}
