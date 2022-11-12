@@ -1,22 +1,28 @@
-import { Peer } from "peerjs";
+import { DataConnection, Peer } from "peerjs";
 
 /// A class which handles player and bot connections
 export default class PlayerManager {
 
     players = [];
     bots = [];
-    eventLog = [];
+    eventLog: Array<string> = [];
 
     // p2p stuff
-    peer = null; // Own peer object
-    lastPeerId = null;
-    conn = null;
+    peer: Peer; // Own peer object
+    lastPeerId: string | null = null;
+    conn: DataConnection | null = null;
 
     redrawHostPage: Function;
 
     constructor(redrawHostPage: Function) {
         // redraw host window function
         this.redrawHostPage = redrawHostPage;
+
+        // Create own peer object with connection to shared PeerJS server
+        this.peer = new Peer("", {
+            debug: 2
+        });
+
 
         // add game manager here
         this.initialize();
@@ -29,19 +35,14 @@ export default class PlayerManager {
      * peer object.
      */
     initialize() {
-        // Create own peer object with connection to shared PeerJS server
-        this.peer = new Peer(null, {
-            debug: 2
-        });
-
         this.peer.on('open', (id) => {
-            // Workaround for peer.reconnect deleting previous id
-            if (this.peer.id === null) {
-                this.logEvent('Received null id from peer open');
-                this.peer.id = this.lastPeerId;
-            } else {
-                this.lastPeerId = this.peer.id;
-            }
+            // // Workaround for peer.reconnect deleting previous id
+            // if (this.peer.id === null) {
+            //     this.logEvent('Received null id from peer open');
+            //     this.peer.id = this.lastPeerId;
+            // } else {
+            //     this.lastPeerId = this.peer.id;
+            // }
 
             this.logEvent(`Host ID obtained: ${this.peer.id}`);
             this.redrawHostPage();
@@ -65,10 +66,10 @@ export default class PlayerManager {
             this.logEvent('Connection lost. Please reconnect');
             this.redrawHostPage();
 
-            // Workaround for peer.reconnect deleting previous id
-            this.peer.id = this.lastPeerId;
-            this.peer._lastServerId = this.lastPeerId;
-            this.peer.reconnect();
+            // // Workaround for peer.reconnect deleting previous id
+            // this.peer.id = this.lastPeerId;
+            // this.peer._lastServerId = this.lastPeerId;
+            // this.peer.reconnect();
         });
         this.peer.on('close', () => {
             this.conn = null;
@@ -84,9 +85,20 @@ export default class PlayerManager {
      * Defines callbacks to handle incoming data and connection events.
      */
     ready() {
+        // if conn is null at this stage, throw an error
+        if (!this.conn) {
+            throw `Tried to interact with null connection`;
+        }
+
+
         this.conn.on('data', (data) => {
+            // ensure that the received data is a string
+            if (typeof data !== "string") {
+                throw `Non-string data type for returned data. Actual type '${typeof data}'`;
+            }
+
             this.logEvent("Data received from conn");
-            this.receiveMessage(data);
+            this.receiveMessage(data.toString());
         });
         this.conn.on('close', () => {
             this.logEvent("Connection reset with conn. Awaiting connection...");
@@ -95,12 +107,12 @@ export default class PlayerManager {
         });
     }
 
-    receiveMessage(data) {
+    receiveMessage(data: string) {
         this.logEvent(data);
         this.redrawHostPage();
     }
 
-    sendMessage(data) {
+    sendMessage(data: string) {
         // Check that we're connected
         if (this.conn && this.conn.open) {
             this.conn.send(data)
@@ -110,7 +122,7 @@ export default class PlayerManager {
         }
     }
 
-    logEvent(message) {
+    logEvent(message: string) {
         this.eventLog.push(message);
     }
 

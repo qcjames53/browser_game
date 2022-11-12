@@ -1,24 +1,29 @@
 import PlayerManager from "./player-manager.js";
 
 export default class HostPageManager {
-    connections = [];
-    playerCount = document.getElementById("player-count");
-    connectionsOverview = document.getElementById("connections-overview");
-    hostId = document.getElementById("host-id") as HTMLInputElement;
-
+    playerCountElement: HTMLElement;
+    hostLogElement: HTMLElement;
+    hostIdElement: HTMLInputElement;
     playerManager: PlayerManager;
 
     constructor() {
         this.playerManager = new PlayerManager(
-            () => this.redrawPageElements()
+            () => { this.redrawPageElements(); }
         );
 
+        // Handle missing page elements                               
+        const missingElement = () => { throw "Missing page element" }
+        this.playerCountElement = document.getElementById("player-count") ?? missingElement();
+        this.hostLogElement = document.getElementById("connections-overview") ?? missingElement();
+        this.hostIdElement = document.getElementById("host-id") as HTMLInputElement ?? missingElement();
+
+        // Draw page elements
         this.redrawPageElements();
     }
 
     redrawPageElements() {
-        this.hostId.value = this.playerManager.displayHostId();
-        this.playerCount.innerHTML = this.playerManager.displayPlayerCount();
-        this.connectionsOverview.innerHTML = this.playerManager.displayEventLog();
+        this.hostIdElement.value = this.playerManager.displayHostId();
+        this.playerCountElement.innerHTML = this.playerManager.displayPlayerCount();
+        this.hostLogElement.innerHTML = this.playerManager.displayEventLog();
     }
 }

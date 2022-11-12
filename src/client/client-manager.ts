@@ -1,19 +1,36 @@
-import { Peer } from "peerjs";
+import { DataConnection, Peer } from "peerjs";
 
 export default class ClientManager {
     lastPeerId = null;
-    peer = null; // own this.peer object
-    conn = null;
-    hostIdInput = document.getElementById("host-id") as HTMLInputElement;
-    connection_status = document.getElementById("connection-status");
-    message = document.getElementById("message");
-    connectButton = document.getElementById("connect-button");
-    playButton = document.getElementById("card-play");
-    sacrificeButton = document.getElementById("card-sacrifice");
-    discardButton = document.getElementById("card-discard");
-    cardNumber = document.getElementById("card-number") as HTMLInputElement;
+    peer: Peer; // own this.peer object
+    conn: DataConnection | null = null;
+    hostIdInput: HTMLInputElement;
+    connection_status: HTMLElement;
+    message: HTMLElement;
+    connectButton: HTMLButtonElement;
+    playButton: HTMLButtonElement;
+    sacrificeButton: HTMLButtonElement;
+    discardButton: HTMLButtonElement;
+    cardNumber: HTMLInputElement;
 
     constructor() {
+        // ensure that the htmlelements are correct
+        const missingElement = () => { throw "Missing page element" }
+        this.hostIdInput = document.getElementById("host-id") as HTMLInputElement ?? missingElement();
+        this.connection_status = document.getElementById("connection-status") ?? missingElement();
+        this.message = document.getElementById("message") ?? missingElement();
+        this.connectButton = document.getElementById("connect-button") as HTMLButtonElement ?? missingElement();
+        this.playButton = document.getElementById("card-play") as HTMLButtonElement ?? missingElement();
+        this.sacrificeButton = document.getElementById("card-sacrifice") as HTMLButtonElement ?? missingElement();
+        this.discardButton = document.getElementById("card-discard") as HTMLButtonElement ?? missingElement();
+        this.cardNumber = document.getElementById("card-number") as HTMLInputElement ?? missingElement();
+
+
+        // Create own this.peer object with connection to shared this.peerJS server
+        this.peer = new Peer("", {
+            debug: 2
+        });
+
         this.initialize();
     }
 
@@ -24,19 +41,15 @@ export default class ClientManager {
      * this.peer object.
      */
     initialize() {
-        // Create own this.peer object with connection to shared this.peerJS server
-        this.peer = new Peer(null, {
-            debug: 2
-        });
 
         this.peer.on('open', (id) => {
-            // Workaround for this.peer.reconnect deleting previous id
-            if (this.peer.id === null) {
-                console.log('Received null id from this.peer open');
-                this.peer.id = this.lastPeerId;
-            } else {
-                this.lastPeerId = this.peer.id;
-            }
+            // // Workaround for this.peer.reconnect deleting previous id
+            // if (this.peer.id === null) {
+            //     console.log('Received null id from this.peer open');
+            //     this.peer.id = this.lastPeerId;
+            // } else {
+            //     this.lastPeerId = this.peer.id;
+            // }
 
             console.log('ID: ' + this.peer.id);
         });
@@ -51,10 +64,10 @@ export default class ClientManager {
             this.connection_status.innerHTML = "Connection lost. Please reconnect";
             console.log('Connection lost. Please reconnect');
 
-            // Workaround for this.peer.reconnect deleting previous id
-            this.peer.id = this.lastPeerId;
-            this.peer._lastServerId = this.lastPeerId;
-            this.peer.reconnect();
+            // // Workaround for this.peer.reconnect deleting previous id
+            // this.peer.id = this.lastPeerId;
+            // this.peer._lastServerId = this.lastPeerId;
+            // this.peer.reconnect();
         });
         this.peer.on('close', () => {
             this.conn = null;
@@ -91,6 +104,11 @@ export default class ClientManager {
         });
 
         this.conn.on('open', () => {
+            // if conn is null at this stage, throw an error
+            if (!this.conn) {
+                throw `Tried to interact with null connection`;
+            }
+
             this.connection_status.innerHTML = "Connected to: " + this.conn.peer;
             console.log("Connected to: " + this.conn.peer);
 
@@ -102,6 +120,11 @@ export default class ClientManager {
         });
         // Handle incoming data (messages only since this is the signal sender)
         this.conn.on('data', (data) => {
+            // ensure that the received data is a string
+            if (typeof data !== "string") {
+                throw `Non-string data type for returned data. Actual type '${typeof data}'`;
+            }
+
             this.displayHand(data);
         });
         this.conn.on('close', () => {
@@ -115,7 +138,7 @@ export default class ClientManager {
      *
      * Would have been easier to use location.hash.
      */
-    getUrlParam(name) {
+    getUrlParam(name: string) {
         name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
         var regexS = "[\\?&]" + name + "=([^&#]*)";
         var regex = new RegExp(regexS);
@@ -126,7 +149,7 @@ export default class ClientManager {
             return results[1];
     }
 
-    displayHand(hand) {
+    displayHand(hand: string) {
         this.message.innerHTML = hand;
     }
 

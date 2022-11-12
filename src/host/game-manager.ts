@@ -12,7 +12,7 @@ export default class GameManager {
     addPlayer() {
     }
 
-    handleInput(input) {
+    handleInput() {
 
     }
 
