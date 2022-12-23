@@ -15,7 +15,7 @@ export default class GameManager {
     age: number;
     isValidGame: boolean;
 
-    // array of cards to deal
+    // array of cards to deal 
     cardsToDeal: number[] = [];
 
     // which direction to rotate the cards
