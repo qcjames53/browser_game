@@ -1,16 +1,24 @@
-import PlayerManager from "./player-manager.js";
+import PlayerManager from "./player-manager";
+import GameManager from "./game-manager";
 
 export default class HostPageManager {
+
+    // Page elements
     playerCountElement: HTMLElement;
     hostLogElement: HTMLElement;
     hostIdElement: HTMLInputElement;
-    playerManager: PlayerManager;
     addBotButton: HTMLButtonElement;
 
+    // Game properties
+    playerManager: PlayerManager;
+    gameManager: GameManager;
+
     constructor() {
+        // Create game properties
         this.playerManager = new PlayerManager(
             () => { this.redrawPageElements(); }
         );
+        this.gameManager = new GameManager();
 
         // Handle missing page elements                               
         const missingElement = () => { throw "Missing page element" }
@@ -22,7 +30,7 @@ export default class HostPageManager {
         // set up buttons
         this.addBotButton.addEventListener("click", () => this.playerManager.addBot());
 
-        // Draw page elements
+        // Draw page elements after setup
         this.redrawPageElements();
     }
 

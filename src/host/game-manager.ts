@@ -1,7 +1,14 @@
+// sets up the game states
+enum GameState {
+    Lobby,
+    Active
+}
+
 export default class GameManager {
 
     // which direction to rotate the cards
-    rotateUp = true;
+    rotateToHigherIndex = true;
+    gameState: GameState = GameState.Lobby;
 
     // array of players
     players = []
