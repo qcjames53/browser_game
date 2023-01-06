@@ -1,5 +1,5 @@
 import GameManager from "./game-manager";
-import Player from "./players";
+import Player from "./player";
 
 export default class GameTestManager {
 

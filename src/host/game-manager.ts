@@ -2,12 +2,13 @@
 import cardsToUse from '../../assets/cards_to_use.json';
 
 // import required objects
-import Player from './players';
+import Player from './player';
 
 // Game constants
 const MIN_PLAYERS = 3;
 const MAX_PLAYERS = 7;
 const MAX_AGE = 3;
+const STARTING_COINS = 3;
 
 export default class GameManager {
 
@@ -32,6 +33,7 @@ export default class GameManager {
         // Add all players
         for (let p = 0; p < this.playerCount; p++) {
             this.players.push(new Player(p));
+            this.players[p].coins = STARTING_COINS;
         }
     }
 
@@ -100,6 +102,13 @@ export default class GameManager {
         let cardsPerPlayer = Math.floor(shuffledCardsToDeal.length / this.playerCount);
         for (let p = 0; p < this.playerCount; p++) {
             this.players[p].hand = shuffledCardsToDeal.slice(cardsPerPlayer * p, cardsPerPlayer * (p + 1));
+        }
+    }
+
+    // Determine all the valid plays for each player
+    determineValidPlays(): void {
+        for (let p = 0; p < this.playerCount; p++) {
+            this.players[p].determineValidPlays();
         }
     }
 }
