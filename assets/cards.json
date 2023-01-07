@@ -12,6 +12,7 @@
         "reward": [
             "compass"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             15
         ]
@@ -20,11 +21,13 @@
         "name": "Altar",
         "index": 1,
         "color": "blue",
+        "cost": [],
         "reward": [
             "vp",
             "vp",
             "vp"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             7
         ]
@@ -39,6 +42,7 @@
         "reward": [
             "compass"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             1,
             2
@@ -60,6 +64,7 @@
             "vp",
             "vp"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             10
         ]
@@ -77,6 +82,7 @@
             "military",
             "military"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             8
         ]
@@ -89,6 +95,18 @@
             "stone",
             "stone",
             "ore"
+        ],
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "level"
+                ],
+                "reward": [
+                    "coin",
+                    "vp"
+                ]
+            }
         ],
         "sigilCost": [
             21
@@ -108,7 +126,8 @@
             "military",
             "military",
             "military"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Barracks",
@@ -119,7 +138,8 @@
         ],
         "reward": [
             "military"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Baths",
@@ -133,6 +153,7 @@
             "vp",
             "vp"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             10
         ]
@@ -141,8 +162,27 @@
         "name": "Bazar",
         "index": 9,
         "color": "yellow",
-        "reward": [
-            "special4"
+        "cost": [],
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "neighbor_grey"
+                ],
+                "reward": [
+                    "coin",
+                    "coin"
+                ]
+            },
+            {
+                "condition": [
+                    "grey"
+                ],
+                "reward": [
+                    "coin",
+                    "coin"
+                ]
+            }
         ]
     },
     {
@@ -155,7 +195,8 @@
         "reward": [
             "brick",
             "brick"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Builders Guild",
@@ -169,8 +210,24 @@
             "brick",
             "glass"
         ],
-        "reward": [
-            "special15"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "level"
+                ],
+                "reward": [
+                    "vp"
+                ]
+            },
+            {
+                "condition": [
+                    "neighbor_level"
+                ],
+                "reward": [
+                    "vp"
+                ]
+            }
         ]
     },
     {
@@ -184,6 +241,7 @@
         "reward": [
             "woodOrStoneOrOreOrBrick"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             4
         ],
@@ -205,7 +263,8 @@
             "military",
             "military",
             "military"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Chamber of Commerce",
@@ -216,8 +275,19 @@
             "brick",
             "paper"
         ],
-        "reward": [
-            "special7"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "grey"
+                ],
+                "reward": [
+                    "coin",
+                    "coin",
+                    "vp",
+                    "vp"
+                ]
+            }
         ]
     },
     {
@@ -235,6 +305,7 @@
             "military",
             "military"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             23
         ]
@@ -248,15 +319,18 @@
         ],
         "reward": [
             "oreOrBrick"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Clay Pool",
         "index": 17,
         "color": "brown",
+        "cost": [],
         "reward": [
             "brick"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Courthouse",
@@ -273,6 +347,7 @@
             "vp",
             "vp"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             5
         ]
@@ -287,8 +362,17 @@
             "ore",
             "ore"
         ],
-        "reward": [
-            "special14"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "neighbor_grey"
+                ],
+                "reward": [
+                    "vp",
+                    "vp"
+                ]
+            }
         ]
     },
     {
@@ -301,8 +385,22 @@
             "stone",
             "textile"
         ],
-        "reward": [
-            "special16"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "all_levels"
+                ],
+                "reward": [
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp",
+                    "vp"
+                ]
+            }
         ]
     },
     {
@@ -317,6 +415,7 @@
         "reward": [
             "compass"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             2
         ],
@@ -329,9 +428,11 @@
         "name": "East Trading Post",
         "index": 22,
         "color": "yellow",
+        "cost": [],
         "reward": [
-            "special0"
+            "reduce_cost_common_right"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             3
         ]
@@ -345,7 +446,8 @@
         ],
         "reward": [
             "stoneOrBrick"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Forest Cave",
@@ -355,8 +457,9 @@
             "coin"
         ],
         "reward": [
-            "logOrOre"
-        ]
+            "woodOrOre"
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Fortifications",
@@ -373,6 +476,7 @@
             "military",
             "military"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             13
         ]
@@ -388,6 +492,7 @@
         "reward": [
             "glassOrPaperOrTextile"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             3
         ],
@@ -404,7 +509,8 @@
         ],
         "reward": [
             "ore"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Gardens",
@@ -422,6 +528,7 @@
             "vp",
             "vp"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             11
         ]
@@ -430,19 +537,23 @@
         "name": "Glassworks",
         "index": 29,
         "color": "gray",
+        "cost": [],
         "reward": [
             "glass"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Guard Tower",
         "index": 30,
+        "color": "red",
         "cost": [
             "brick"
         ],
         "reward": [
             "military"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Haven",
@@ -453,8 +564,17 @@
             "ore",
             "textile"
         ],
-        "reward": [
-            "special5"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "brown"
+                ],
+                "reward": [
+                    "coin",
+                    "vp"
+                ]
+            }
         ],
         "sigilCost": [
             12
@@ -472,6 +592,7 @@
         "reward": [
             "cog"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             9
         ],
@@ -492,6 +613,7 @@
         "reward": [
             "tablet"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             6
         ],
@@ -508,8 +630,17 @@
             "stone",
             "glass"
         ],
-        "reward": [
-            "special6"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "yellow"
+                ],
+                "reward": [
+                    "coin",
+                    "vp"
+                ]
+            }
         ],
         "sigilCost": [
             14
@@ -528,6 +659,7 @@
         "reward": [
             "compass"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             22
         ]
@@ -536,9 +668,11 @@
         "name": "Loom",
         "index": 36,
         "color": "gray",
+        "cost": [],
         "reward": [
             "textile"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Ludus",
@@ -548,17 +682,30 @@
             "stone",
             "ore"
         ],
-        "reward": [
-            "special8"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "red"
+                ],
+                "reward": [
+                    "coin",
+                    "coin",
+                    "coin",
+                    "vp"
+                ]
+            }
         ]
     },
     {
         "name": "Lumber Yard",
         "index": 38,
         "color": "brown",
+        "cost": [],
         "reward": [
             "wood"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Magistrates Guild",
@@ -571,17 +718,27 @@
             "stone",
             "textile"
         ],
-        "reward": [
-            "special17"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "neighbor_blue"
+                ],
+                "reward": [
+                    "vp"
+                ]
+            }
         ]
     },
     {
         "name": "Marketplace",
         "index": 40,
         "color": "yellow",
+        "cost": [],
         "reward": [
-            "special1"
+            "reduce_cost_luxury"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             4
         ]
@@ -595,7 +752,8 @@
         ],
         "reward": [
             "stoneOrOre"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Observatory",
@@ -610,6 +768,7 @@
         "reward": [
             "cog"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             19
         ]
@@ -618,9 +777,11 @@
         "name": "Ore Vein",
         "index": 43,
         "color": "brown",
+        "cost": [],
         "reward": [
             "ore"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Palace",
@@ -644,7 +805,8 @@
             "vp",
             "vp",
             "vp"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Pantheon",
@@ -667,6 +829,7 @@
             "vp",
             "vp"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             7
         ]
@@ -682,17 +845,27 @@
             "paper",
             "textile"
         ],
-        "reward": [
-            "special10"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "neighbor_green"
+                ],
+                "reward": [
+                    "vp"
+                ]
+            }
         ]
     },
     {
         "name": "Press",
         "index": 47,
         "color": "gray",
+        "cost": [],
         "reward": [
             "paper"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Quarry",
@@ -704,7 +877,8 @@
         "reward": [
             "stone",
             "stone"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Sawmill",
@@ -716,7 +890,8 @@
         "reward": [
             "wood",
             "wood"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "School",
@@ -729,6 +904,7 @@
         "reward": [
             "tablet"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             15,
             16
@@ -747,7 +923,8 @@
         ],
         "reward": [
             "compassOrTabletOrCog"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Scriptorium",
@@ -759,6 +936,7 @@
         "reward": [
             "tablet"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             5,
             6
@@ -782,6 +960,7 @@
             "vp",
             "vp"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             17
         ]
@@ -797,8 +976,32 @@
             "glass",
             "paper"
         ],
-        "reward": [
-            "special18"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "brown"
+                ],
+                "reward": [
+                    "vp"
+                ]
+            },
+            {
+                "condition": [
+                    "grey"
+                ],
+                "reward": [
+                    "vp"
+                ]
+            },
+            {
+                "condition": [
+                    "purple"
+                ],
+                "reward": [
+                    "vp"
+                ]
+            }
         ]
     },
     {
@@ -816,6 +1019,7 @@
             "military",
             "military"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             20
         ]
@@ -829,8 +1033,16 @@
             "brick",
             "glass"
         ],
-        "reward": [
-            "special13"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "neighbor_red"
+                ],
+                "reward": [
+                    "vp"
+                ]
+            }
         ]
     },
     {
@@ -846,6 +1058,7 @@
             "military",
             "military"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             1
         ]
@@ -865,6 +1078,7 @@
             "vp",
             "vp"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             0
         ]
@@ -873,9 +1087,11 @@
         "name": "Stone Pit",
         "index": 59,
         "color": "brown",
+        "cost": [],
         "reward": [
             "stone"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Stockade",
@@ -886,7 +1102,8 @@
         ],
         "reward": [
             "military"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Study",
@@ -900,6 +1117,7 @@
         "reward": [
             "cog"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             16
         ]
@@ -908,13 +1126,15 @@
         "name": "Tavern",
         "index": 62,
         "color": "yellow",
+        "cost": [],
         "reward": [
             "coin",
             "coin",
             "coin",
             "coin",
             "coin"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Temple",
@@ -930,17 +1150,20 @@
             "vp",
             "vp",
             "vp"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Theater",
         "index": 64,
         "color": "color",
+        "cost": [],
         "reward": [
             "vp",
             "vp",
             "vp"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             11
         ]
@@ -953,8 +1176,9 @@
             "coin"
         ],
         "reward": [
-            "logOrStone"
-        ]
+            "woodOrStone"
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Town Hall",
@@ -973,7 +1197,8 @@
             "vp",
             "vp",
             "vp"
-        ]
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "Traders Guild",
@@ -984,8 +1209,16 @@
             "paper",
             "textile"
         ],
-        "reward": [
-            "special11"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "neighbor_yellow"
+                ],
+                "reward": [
+                    "vp"
+                ]
+            }
         ]
     },
     {
@@ -1001,6 +1234,7 @@
             "military",
             "military"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             23
         ]
@@ -1013,8 +1247,9 @@
             "coin"
         ],
         "reward": [
-            "logOrBrick"
-        ]
+            "woodOrBrick"
+        ],
+        "rewardRepeating": []
     },
     {
         "name": "University",
@@ -1029,6 +1264,7 @@
         "reward": [
             "tablet"
         ],
+        "rewardRepeating": [],
         "sigilCost": [
             18
         ]
@@ -1037,8 +1273,25 @@
         "name": "Vineyard",
         "index": 71,
         "color": "yellow",
-        "reward": [
-            "special3"
+        "cost": [],
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "neighbor_brown"
+                ],
+                "reward": [
+                    "coin"
+                ]
+            },
+            {
+                "condition": [
+                    "brown"
+                ],
+                "reward": [
+                    "coin"
+                ]
+            }
         ]
     },
     {
@@ -1054,6 +1307,7 @@
             "military",
             "military"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             13
         ]
@@ -1062,11 +1316,13 @@
         "name": "Well",
         "index": 73,
         "color": "blue",
+        "cost": [],
         "reward": [
             "vp",
             "vp",
             "vp"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             0
         ]
@@ -1075,9 +1331,11 @@
         "name": "West Trading Post",
         "index": 74,
         "color": "yellow",
+        "cost": [],
         "reward": [
-            "special2"
+            "reduce_cost_common_left"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             3
         ]
@@ -1093,8 +1351,16 @@
             "stone",
             "brick"
         ],
-        "reward": [
-            "special12"
+        "reward": [],
+        "rewardRepeating": [
+            {
+                "condition": [
+                    "neighbor_brown"
+                ],
+                "reward": [
+                    "vp"
+                ]
+            }
         ]
     },
     {
@@ -1107,6 +1373,7 @@
         "reward": [
             "cog"
         ],
+        "rewardRepeating": [],
         "sigilReward": [
             8,
             9

@@ -8,6 +8,7 @@ export default class GameTestManager {
     startGameElement: HTMLButtonElement;
     getDeckElement: HTMLButtonElement;
     dealCardsElement: HTMLButtonElement;
+    determineValidPlaysElement: HTMLButtonElement;
     playAllCardsElement: HTMLButtonElement;
     playerNumberElement: HTMLInputElement;
     cardNumberElement: HTMLInputElement;
@@ -27,6 +28,7 @@ export default class GameTestManager {
         this.startGameElement = document.getElementById("start-game") as HTMLButtonElement | null ?? missingElement();
         this.getDeckElement = document.getElementById("get-deck") as HTMLButtonElement | null ?? missingElement();
         this.dealCardsElement = document.getElementById("deal-cards") as HTMLButtonElement | null ?? missingElement();
+        this.determineValidPlaysElement = document.getElementById("determine-valid-plays") as HTMLButtonElement | null ?? missingElement();
         this.playAllCardsElement = document.getElementById("play-all-cards") as HTMLButtonElement | null ?? missingElement();
         this.playerNumberElement = document.getElementById("player-number") as HTMLInputElement | null ?? missingElement();
         this.cardNumberElement = document.getElementById("card-number") as HTMLInputElement | null ?? missingElement();
@@ -40,6 +42,7 @@ export default class GameTestManager {
         this.startGameElement.addEventListener("click", () => this.startGame());
         this.getDeckElement.addEventListener("click", () => this.getDeck());
         this.dealCardsElement.addEventListener("click", () => this.dealCards());
+        this.determineValidPlaysElement.addEventListener("click", () => this.determineValidPlays());
         this.playAllCardsElement.addEventListener("click", () => this.playAllCards());
         this.playCardElement.addEventListener("click", () => this.playCard());
         this.sacrificeCardElement.addEventListener("click", () => this.sacrificeCard());
@@ -61,6 +64,12 @@ export default class GameTestManager {
     dealCards() {
         this.logMessage("Dealing cards");
         this.gameManager.dealCards();
+        this.updatePlayerHands();
+    }
+
+    determineValidPlays() {
+        this.logMessage("Determining valid plays");
+        this.gameManager.determineValidPlays();
         this.updatePlayerHands();
     }
 
@@ -94,9 +103,26 @@ export default class GameTestManager {
 
         // Display player states
         for (let p = 0; p < this.gameManager.playerCount; p++) {
-            this.playerHandsElement.innerHTML += "<br/>";
             let player: Player = this.gameManager.players[p];
-            this.playerHandsElement.innerHTML += `Player ${player.playerIndex} hand: ${player.hand.sort((n1, n2) => n1 - n2)} [${player.hand.length}]<br/>`;
+
+            this.playerHandsElement.innerHTML += `<br/>Player ${player.playerIndex} - Coins:${player.coins} - Next move: ${player.nextMove}`;
+
+            let playerTable = `<table><tr><th>Hand</th>`;
+            for (let card in player.hand.sort((n1, n2) => n1 - n2)) {
+                playerTable += `<td>${player.hand[card]}</td>`;
+            }
+            playerTable += `</tr>`;
+            let playRow = `<th>P</th>`;
+            let sacRow = `<th>S</th>`;
+            let disRow = `<th>D</th>`;
+            for (let c = 0; c < player.validPlays.length; c++) {
+                playRow += `<td>${player.validPlays[c][0]}</td>`
+                sacRow += `<td>${player.validPlays[c][1]}</td>`
+                disRow += `<td>${player.validPlays[c][2]}</td>`
+            }
+            playerTable += `<tr>${playRow}</tr><tr>${sacRow}</tr><tr>${disRow}</tr></table>`
+
+            this.playerHandsElement.innerHTML += playerTable;
         }
     }
 

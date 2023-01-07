@@ -3,6 +3,7 @@ import cardsToUse from '../../assets/cards_to_use.json';
 
 // import required objects
 import Player from './player';
+import CardReference from './card-reference';
 
 // Game constants
 const MIN_PLAYERS = 3;
@@ -15,6 +16,7 @@ export default class GameManager {
     playerCount: number;
     age: number;
     isValidGame: boolean;
+    cardReference = new CardReference();
 
     // array of cards to deal 
     cardsToDeal: number[] = [];
@@ -32,7 +34,7 @@ export default class GameManager {
 
         // Add all players
         for (let p = 0; p < this.playerCount; p++) {
-            this.players.push(new Player(p));
+            this.players.push(new Player(p, this.cardReference));
             this.players[p].coins = STARTING_COINS;
         }
     }
@@ -110,6 +112,10 @@ export default class GameManager {
         for (let p = 0; p < this.playerCount; p++) {
             this.players[p].determineValidPlays();
         }
+    }
+
+    getValidPlays(player: number): number[][] {
+        return this.players[player].validPlays;
     }
 }
 
